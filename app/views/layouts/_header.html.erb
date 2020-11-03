@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="container">
+  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <% if user_signed_in? %>
+    <a class="navbar-brand" href="/">うた氏のブログ</a>
+  <% else %>
+    <a class="navbar-brand" href="/">ブログサービス</a>
+  <% end %>
+
+  <div class="collapse navbar-collapse" id="navigation">
+    <% if user_signed_in? %>
+        <spon class="navbar-text ml-auto">
+        <%= link_to '新規作成', new_article_path %>
+        &nbsp;
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        </spon>
+    <% else %>
+        <spon class="navbar-text ml-auto">
+            <%= link_to 'ユーザー登録', new_user_registration_path %>
+            &nbsp;
+            <%= link_to 'ログイン', new_user_session_path %>
+        </spon>
+    <% end %>
+  </div>
+</div>
+</nav>
